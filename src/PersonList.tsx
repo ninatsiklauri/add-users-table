@@ -32,7 +32,7 @@ const usePersonStore = create<PersonStore>((set) => ({
   
     fetchPersons: async () => {
       try {
-        const response = await axios.get('http://localhost:8000/');
+        const response = await axios.get('https://nodejs-production-9969.up.railway.app/');
         set({ persons: response.data });
       } catch (error) {
         console.error(error);
@@ -49,7 +49,7 @@ const usePersonStore = create<PersonStore>((set) => ({
   
     deletePerson: async (id: number) => {
       try {
-        await axios.delete(`http://localhost:8000/${id}`);
+        await axios.delete(`https://nodejs-production-9969.up.railway.app/${id}`);
         set((state) => ({
           persons: state.persons.filter((person) => person.id !== id),
         }));
@@ -149,7 +149,7 @@ const tableProps = {
         phone: values.phone,
       };
   
-      axios.post(`http://localhost:8000/`, newPerson)
+      axios.post(`https://nodejs-production-9969.up.railway.app/`, newPerson)
           .then((response) => {
               addPerson(response.data);
               setIsVisible(false);
